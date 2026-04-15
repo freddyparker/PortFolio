@@ -27,6 +27,136 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- Custom Portfolio Animations -->
+  <style>
+    @keyframes shimmer {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+
+    @keyframes iconPulse {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0.5));
+      }
+      50% {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+      }
+    }
+
+    @keyframes cardHover {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes borderGlow {
+      0%, 100% {
+        box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
+      }
+      50% {
+        box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
+      }
+    }
+
+    @keyframes titleFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-2px);
+      }
+    }
+
+    /* Portfolio Card Hover Effect */
+    .portfolio-card-hover {
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border: 2px solid transparent;
+    }
+
+    .portfolio-card-hover:hover {
+      animation: cardHover 0.6s ease-out forwards, borderGlow 2s ease-in-out infinite;
+      border: 2px solid rgba(102, 126, 234, 0.3);
+    }
+
+    /* Portfolio Title Animation */
+    .portfolio-title-animate {
+      transition: all 0.3s ease;
+    }
+
+    .portfolio-card-hover:hover .portfolio-title-animate {
+      animation: titleFloat 1.5s ease-in-out infinite;
+      color: #667eea;
+    }
+
+    /* Button Hover Scale */
+    .btn-hover-scale {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .btn-hover-scale .btn-text {
+      transition: all 0.3s ease;
+    }
+
+    .btn-hover-scale::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: left 0.4s ease;
+    }
+
+    .btn-hover-scale:hover {
+      transform: scale(1.05);
+      letter-spacing: 1px;
+    }
+
+    .btn-hover-scale:hover::before {
+      left: 100%;
+    }
+
+    /* Portfolio Header Smooth Animation */
+    .portfolio-header-animate {
+      transition: all 0.4s ease;
+    }
+
+    .portfolio-card-hover:hover .portfolio-header-animate {
+      transform: scale(1.02);
+    }
+
+    /* Chez Freddy Card - Subtle food glow */
+    .col-lg-4:nth-child(1) .portfolio-item {
+      border-top: 3px solid transparent;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.98) 100%);
+    }
+
+    .col-lg-4:nth-child(1) .portfolio-item:hover {
+      border-top-color: #ff6b6b;
+    }
+
+    /* Chez Freddy Image Zoom on Hover */
+    .col-lg-4:nth-child(1) .portfolio-item img {
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .col-lg-4:nth-child(1) .portfolio-item:hover img {
+      transform: scale(1.08);
+    }
+  </style>
+
   <!-- =======================================================
   * Template Name: SnapFolio
   * Template URL: https://bootstrapmade.com/snapfolio-bootstrap-portfolio-template/
@@ -162,7 +292,7 @@
               </div>
 
               <div class="description">
-                <p>Actuellement en première année à l'IFRI, je me spécialise dans la sécurité informatique et le développement web. J'aime relever des défis techniques, apprendre de nouvelles méthodes et collaborer sur des projets innovants. Mon ambition : contribuer à la protection des données et à la fiabilité des systèmes numériques.</p>
+                <p>Actuellement en deuxième année à l'IFRI, je me spécialise dans la sécurité informatique et le développement web. J'aime relever des défis techniques, apprendre de nouvelles méthodes et collaborer sur des projets innovants. Mon ambition : contribuer à la protection des données et à la fiabilité des systèmes numériques.</p>
               </div>
 
               <!-- Statistiques personnelles supprimées pour alléger la présentation -->
@@ -171,7 +301,7 @@
                 <div class="detail-row">
                   <div class="detail-item">
                   <span class="detail-label">Formation</span>
-                  <span class="detail-value">Licence 1 : Institut de Formation et de Recherche en Informatique (IFRI)</span>
+                  <span class="detail-value">Licence 2 : Institut de Formation et de Recherche en Informatique (IFRI)</span>
                   </div>
                   <div class="detail-item">
                   <span class="detail-label">Diplômes</span>
@@ -451,8 +581,39 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio section">
       <div class="container section-title" data-aos="fade-up">
-  <h2>Portfolio</h2>
-  <p>LIENS ET QR CODE VERS MON PORTFOLIO PROFESSIONNEL : <a href="https://port-folio-nine-jet.vercel.app/" target="_blank">https://port-folio-nine-jet.vercel.app/</a></p>
+        <h2>Portfolio</h2>
+        <p>Retrouvez mes projets et réalisations professionnelles</p>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-4">
+          <!-- Portfolio - Chez Freddy -->
+          <div class="col-lg-4 col-md-6">
+            <div class="portfolio-item p-3 rounded shadow-sm" data-aos="fade-up" data-aos-delay="150">
+              <img src="http://static.photos/restaurant/640x360/1" alt="Chez Freddy" class="img-fluid rounded mb-2">
+              <h4>Chez Freddy</h4>
+              <p>Site vitrine personnel : design responsive et pages de présentation. Déployé sur Vercel.</p>
+              <a href="https://chez-freddy.vercel.app/" class="btn btn-primary" target="_blank" rel="noopener">Voir le projet</a>
+            </div>
+          </div>
+
+          <!-- Site Professionnel & E-Commerce -->
+          <div class="col-lg-4 col-md-6">
+            <div class="portfolio-item portfolio-card-hover p-3 rounded shadow-sm" data-aos="fade-up" data-aos-delay="200">
+              <div class="portfolio-header portfolio-header-animate" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; padding: 30px 20px; text-align: center; color: white; margin-bottom: 15px; position: relative; overflow: hidden;">
+                <div class="header-shimmer" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: shimmer 2s infinite;"></div>
+                <i class="bi bi-shop" style="font-size: 2.5rem; margin-bottom: 10px; display: block; position: relative; z-index: 1; animation: iconPulse 2s ease-in-out infinite;"></i>
+                <h5 style="margin: 0; font-size: 1.2rem; position: relative; z-index: 1;">Site Professionnel</h5>
+              </div>
+              <h4 class="portfolio-title-animate">Site Professionnel & E-Commerce</h4>
+              <p>Découvrez des solutions web professionnelles et des plateformes e-commerce optimisées pour augmenter vos ventes et votre présence digitale.</p>
+              <a href="https://port-folio-keren.vercel.app/" class="btn btn-primary btn-hover-scale" target="_blank" rel="noopener">
+                <span class="btn-text">Voir les projets</span>
+                <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section><!-- /Portfolio Section -->
 
