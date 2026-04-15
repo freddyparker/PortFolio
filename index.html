@@ -147,6 +147,125 @@
       border-top-color: #ff6b6b;
     }
 
+    /* ===== Portfolio Premium Styles ===== */
+    .portfolio-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+
+    .portfolio-card:hover .portfolio-image {
+      transform: scale(1.05);
+      filter: brightness(0.8);
+    }
+
+    .premium-card .portfolio-image {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: flex-end;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    .portfolio-content {
+      width: 100%;
+      padding: 40px 30px 30px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 100%);
+      color: white;
+      position: relative;
+      z-index: 2;
+      animation: slideUp 0.6s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .project-category {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .portfolio-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 10px 0;
+      letter-spacing: -0.5px;
+    }
+
+    .portfolio-description {
+      font-size: 15px;
+      line-height: 1.6;
+      opacity: 0.95;
+      margin: 0;
+    }
+
+    .portfolio-info {
+      margin-bottom: 20px;
+    }
+
+    .portfolio-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      opacity: 0.9;
+      font-weight: 500;
+    }
+
+    .meta-item i {
+      font-size: 16px;
+    }
+
+    .btn-white {
+      background: white;
+      color: #333;
+      border: none;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .btn-white:hover {
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      color: #333;
+    }
+
     /* Chez Freddy Image Zoom on Hover */
     .col-lg-4:nth-child(1) .portfolio-item img {
       transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -583,42 +702,56 @@
     <section id="portfolio" class="portfolio section">
       <div class="container section-title" data-aos="fade-up">
         <h2>Portfolio</h2>
-        <p>Retrouvez mes projets et réalisations professionnelles</p>
+        <p>Découvrez mes projets professionnels et réalisations</p>
       </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row g-4">
-          <!-- Portfolio - Chez Freddy -->
-          <div class="col-lg-4 col-md-6">
-            <div class="portfolio-item portfolio-card-hover p-3 rounded shadow-sm" data-aos="fade-up" data-aos-delay="150">
-              <div class="portfolio-header portfolio-header-animate" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%); border-radius: 8px; padding: 30px 20px; text-align: center; color: white; margin-bottom: 15px; position: relative; overflow: hidden;">
-                <div class="header-shimmer" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: shimmer 2s infinite;"></div>
-                <i class="bi bi-cup-hot" style="font-size: 2.5rem; margin-bottom: 10px; display: block; position: relative; z-index: 1; animation: iconPulse 2s ease-in-out infinite;"></i>
-                <h5 style="margin: 0; font-size: 1.2rem; position: relative; z-index: 1;">Site Vitrine</h5>
+          <!-- Projet 1: Chez Freddy -->
+          <div class="col-lg-6 col-md-12">
+            <div class="portfolio-card premium-card" data-aos="fade-up" data-aos-delay="150">
+              <div class="portfolio-image" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url('http://static.photos/restaurant/640x360/1') center/cover; height: 400px; position: relative; border-radius: 12px; overflow: hidden;">
+                <div class="portfolio-content">
+                  <div class="portfolio-info">
+                    <span class="project-category">Site Vitrine</span>
+                    <h3 class="portfolio-title">Chez Freddy</h3>
+                    <p class="portfolio-description">Restaurant moderne avec site vitrine élégant, responsive et performant.</p>
+                  </div>
+                  <div class="portfolio-footer">
+                    <div class="project-meta">
+                      <span class="meta-item"><i class="bi bi-palette"></i> Design Moderne</span>
+                      <span class="meta-item"><i class="bi bi-lightning"></i> Performance</span>
+                    </div>
+                    <a href="https://chez-freddy.vercel.app/" class="btn btn-white btn-sm" target="_blank" rel="noopener">
+                      Visiter <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                  </div>
+                </div>
               </div>
-              <h4 class="portfolio-title-animate">Chez Freddy</h4>
-              <p>Site vitrine personnel avec design responsive et pages de présentation élégantes. Déployé sur Vercel avec une expérience utilisateur optimisée.</p>
-              <a href="https://chez-freddy.vercel.app/" class="btn btn-primary btn-hover-scale" target="_blank" rel="noopener">
-                <span class="btn-text">Voir le projet</span>
-                <i class="bi bi-arrow-right ms-2"></i>
-              </a>
             </div>
           </div>
 
-          <!-- Site Professionnel & E-Commerce -->
-          <div class="col-lg-4 col-md-6">
-            <div class="portfolio-item portfolio-card-hover p-3 rounded shadow-sm" data-aos="fade-up" data-aos-delay="200">
-              <div class="portfolio-header portfolio-header-animate" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; padding: 30px 20px; text-align: center; color: white; margin-bottom: 15px; position: relative; overflow: hidden;">
-                <div class="header-shimmer" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: shimmer 2s infinite;"></div>
-                <i class="bi bi-shop" style="font-size: 2.5rem; margin-bottom: 10px; display: block; position: relative; z-index: 1; animation: iconPulse 2s ease-in-out infinite;"></i>
-                <h5 style="margin: 0; font-size: 1.2rem; position: relative; z-index: 1;">Site Professionnel</h5>
+          <!-- Projet 2: Site Professionnel & E-Commerce -->
+          <div class="col-lg-6 col-md-12">
+            <div class="portfolio-card premium-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="portfolio-image" style="background: linear-gradient(rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.7)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=640&h=360&fit=crop') center/cover; height: 400px; position: relative; border-radius: 12px; overflow: hidden;">
+                <div class="portfolio-content">
+                  <div class="portfolio-info">
+                    <span class="project-category">E-Commerce</span>
+                    <h3 class="portfolio-title">Boutique Digital</h3>
+                    <p class="portfolio-description">Plateforme e-commerce complète avec paiement, gestion inventaire et analyse.</p>
+                  </div>
+                  <div class="portfolio-footer">
+                    <div class="project-meta">
+                      <span class="meta-item"><i class="bi bi-cart-check"></i> E-Commerce</span>
+                      <span class="meta-item"><i class="bi bi-shield-check"></i> Sécurisé</span>
+                    </div>
+                    <a href="https://port-folio-keren.vercel.app/" class="btn btn-white btn-sm" target="_blank" rel="noopener">
+                      Explorer <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                  </div>
+                </div>
               </div>
-              <h4 class="portfolio-title-animate">Site Professionnel & E-Commerce</h4>
-              <p>Découvrez des solutions web professionnelles et des plateformes e-commerce optimisées pour augmenter vos ventes et votre présence digitale.</p>
-              <a href="https://port-folio-keren.vercel.app/" class="btn btn-primary btn-hover-scale" target="_blank" rel="noopener">
-                <span class="btn-text">Voir les projets</span>
-                <i class="bi bi-arrow-right ms-2"></i>
-              </a>
             </div>
           </div>
         </div>
